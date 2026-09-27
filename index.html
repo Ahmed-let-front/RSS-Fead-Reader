@@ -7,8 +7,351 @@
       content="Frontpage is a fast, clean, and distraction-free RSS feed reader combining modern information density with peaceful long-form reading."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="./src/js/main.js"></script>
     <title>Frontpage — Clean, Content-Focused RSS Feed Reader</title>
   </head>
-  <body></body>
+  <body class="h-full bg-bg-primary font-sans text-text-primary antialiased overflow-hidden">
+    <div class="flex h-full w-full">
+      <aside
+        class="hidden md:flex w-[var(--sidebar-width)] flex-col border-r border-border bg-bg-secondary h-full shrink-0"
+        aria-label="Sidebar Navigation"
+      >
+        <div class="flex items-center px-4 h-16 border-b border-border shrink-0">
+          <div class="flex items-center gap-2 text-accent">
+            <svg class="w-6 h-6 fill-none stroke-current">
+              <use href="./sprite.svg#logo"></use>
+            </svg>
+            <h1 class="text-lg font-bold text-text-primary tracking-tight">Frontpage</h1>
+          </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-4 space-y-6">
+          <nav class="space-y-1" aria-label="Main">
+            <a href="#" class="sidebar-item bg-bg-tertiary text-text-primary" aria-current="page">
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 fill-none stroke-current">
+                  <use href="/sprite.svg#all-items"></use>
+                </svg>
+                <span>All Items</span>
+              </div>
+              <span class="text-xs text-text-tertiary font-mono">47</span>
+            </a>
+            <a href="#" class="sidebar-item">
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 fill-none stroke-current">
+                  <use href="/sprite.svg#saved"></use>
+                </svg>
+                <span>Saved</span>
+              </div>
+              <span class="text-xs text-text-tertiary font-mono">12</span>
+            </a>
+          </nav>
+
+          <div>
+            <h3 class="px-2 text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-2">Categories</h3>
+            <nav class="space-y-0.5" aria-label="Categories">
+              <a href="#" class="sidebar-item">
+                <div class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span>
+                  <span>Frontend</span>
+                </div>
+                <span class="text-xs text-text-tertiary font-mono">14</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <div class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-error"></span>
+                  <span>CSS-Tricks</span>
+                </div>
+                <span class="text-xs text-text-tertiary font-mono">3</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <div class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-warning"></span>
+                  <span>Smashing Mag</span>
+                </div>
+                <span class="text-xs text-text-tertiary font-mono">4</span>
+              </a>
+              <a href="#" class="sidebar-item">
+                <div class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-success"></span>
+                  <span>Josh Comeau</span>
+                </div>
+                <span class="text-xs text-text-tertiary font-mono">2</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="p-4 border-t border-border shrink-0">
+          <div class="flex items-center gap-2 text-sm text-text-secondary">
+            <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+            <span>All feeds healthy</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="flex-1 flex flex-col h-full min-w-0 bg-bg-primary">
+        <header
+          class="h-16 border-b border-border flex items-center justify-between px-4 md:px-6 shrink-0 bg-bg-primary/80 backdrop-blur-sm sticky top-0 z-10"
+        >
+          <button class="md:hidden btn-icon" aria-label="Open sidebar">
+            <svg class="w-5 h-5 fill-none stroke-current">
+              <use href="/sprite.svg#menu"></use>
+            </svg>
+          </button>
+
+          <nav class="hidden md:flex items-center gap-6 h-full" aria-label="Feed Tabs">
+            <a
+              href="#"
+              class="relative h-full flex items-center text-sm font-medium text-text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent"
+              aria-current="page"
+              >Feed</a
+            >
+            <a
+              href="#"
+              class="h-full flex items-center text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+              >Digest</a
+            >
+            <a
+              href="#"
+              class="h-full flex items-center text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+              >Discover</a
+            >
+          </nav>
+
+          <div class="flex items-center gap-3">
+            <div class="relative hidden sm:block">
+              <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary fill-none stroke-current">
+                <use href="/sprite.svg#search"></use>
+              </svg>
+              <input
+                type="text"
+                placeholder="Search articles..."
+                class="w-64 pl-9 pr-4 py-1.5 text-sm bg-bg-secondary border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent text-text-primary placeholder:text-text-tertiary transition-colors"
+              />
+            </div>
+            <button class="btn-icon" aria-label="Add new feed">
+              <svg class="w-5 h-5 fill-none stroke-current">
+                <use href="/sprite.svg#plus"></use>
+              </svg>
+            </button>
+            <button
+              class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-xs font-bold"
+              aria-label="User profile"
+            >
+              MS
+            </button>
+          </div>
+        </header>
+
+        <div class="flex items-center justify-between px-6 py-4 border-b border-border-subtle shrink-0">
+          <div class="flex items-baseline gap-3">
+            <h1 class="text-xl font-bold text-text-primary">All Items</h1>
+            <span class="text-sm text-text-secondary">47 unread</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="hidden sm:flex items-center rounded-md border border-border bg-bg-primary p-0.5">
+              <button class="p-1.5 rounded text-text-primary bg-bg-tertiary" aria-label="List view">
+                <svg class="w-4 h-4 fill-none stroke-current">
+                  <use href="/sprite.svg#list"></use>
+                </svg>
+              </button>
+              <button
+                class="p-1.5 rounded text-text-tertiary hover:text-text-primary transition-colors"
+                aria-label="Grid view"
+              >
+                <svg class="w-4 h-4 fill-none stroke-current">
+                  <use href="/sprite.svg#grid"></use>
+                </svg>
+              </button>
+            </div>
+            <button class="btn-secondary text-xs px-3 py-1.5">
+              <svg class="w-4 h-4 mr-1.5 fill-none stroke-current">
+                <use href="/sprite.svg#sort-desc"></use>
+              </svg>
+              Newest
+            </button>
+            <button class="btn-secondary text-xs px-3 py-1.5 hidden sm:inline-flex">
+              <svg class="w-4 h-4 mr-1.5 fill-none stroke-current">
+                <use href="/sprite.svg#refresh"></use>
+              </svg>
+              Refresh
+            </button>
+            <button class="btn-secondary text-xs px-3 py-1.5 hidden lg:inline-flex">Mark all read</button>
+          </div>
+        </div>
+
+        <div class="bg-accent-subtle text-accent text-sm py-2 px-6 text-center shrink-0 font-medium">
+          <a href="#" class="hover:underline flex items-center justify-center gap-1">
+            <svg class="w-4 h-4 fill-none stroke-current">
+              <use href="/sprite.svg#arrow-up"></use>
+            </svg>
+            5 new items since your last visit
+          </a>
+        </div>
+
+        <div class="flex-1 overflow-y-auto">
+          <div class="max-w-[var(--container-feed)] mx-auto w-full px-4 md:px-6 py-2">
+            <div class="text-xs font-semibold text-text-tertiary uppercase tracking-wider py-4">Today</div>
+
+            <article class="feed-item">
+              <div class="mt-1.5 w-2 h-2 rounded-full bg-unread shrink-0" aria-label="Unread"></div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 text-xs text-text-secondary mb-1.5">
+                  <img
+                    src="https://www.google.com/s2/favicons?domain=smashingmagazine.com"
+                    alt=""
+                    class="w-4 h-4 rounded-sm"
+                    aria-hidden="true"
+                  />
+                  <span class="font-medium text-text-primary hover:underline cursor-pointer">Smashing Magazine</span>
+                  <span aria-hidden="true">·</span>
+                  <time datetime="2023-10-27T10:00:00Z">2h ago</time>
+                </div>
+                <h2
+                  class="text-lg font-semibold text-text-primary mb-2 leading-snug group-hover:text-accent transition-colors"
+                >
+                  <a href="#" class="focus-visible:outline-none">Practical Guide To Designing For Colorblind Users</a>
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">
+                  Color blindness affects roughly 8% of men and 0.5% of women worldwide. Yet most interfaces rely
+                  heavily on color to convey meaning, status, and hierarchy. Here's how to design interfaces that work
+                  for everyone without sacrificing visual richness.
+                </p>
+                <div class="flex items-center gap-2">
+                  <span class="tag">Design</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="feed-item">
+              <div class="mt-1.5 w-2 h-2 rounded-full bg-unread shrink-0" aria-label="Unread"></div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 text-xs text-text-secondary mb-1.5">
+                  <img
+                    src="https://www.google.com/s2/favicons?domain=blog.cloudflare.com"
+                    alt=""
+                    class="w-4 h-4 rounded-sm"
+                    aria-hidden="true"
+                  />
+                  <span class="font-medium text-text-primary hover:underline cursor-pointer">Cloudflare Blog</span>
+                  <span aria-hidden="true">·</span>
+                  <time datetime="2023-10-27T09:00:00Z">3h ago</time>
+                </div>
+                <h2
+                  class="text-lg font-semibold text-text-primary mb-2 leading-snug group-hover:text-accent transition-colors"
+                >
+                  <a href="#" class="focus-visible:outline-none"
+                    >How We Reduced P99 Latency by 60% with Edge-First Caching</a
+                  >
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">
+                  Our engineering team spent the last quarter rethinking how we cache at the edge. The result:
+                  dramatically lower tail latency for our most demanding customers, and lessons applicable to any
+                  distributed system.
+                </p>
+                <div class="flex items-center gap-2">
+                  <span class="tag">Backend &amp; DevOps</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="feed-item">
+              <div class="mt-1.5 w-2 h-2 rounded-full bg-unread shrink-0" aria-label="Unread"></div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 text-xs text-text-secondary mb-1.5">
+                  <img
+                    src="https://www.google.com/s2/favicons?domain=simonwillison.net"
+                    alt=""
+                    class="w-4 h-4 rounded-sm"
+                    aria-hidden="true"
+                  />
+                  <span class="font-medium text-text-primary hover:underline cursor-pointer">Simon Willison</span>
+                  <span aria-hidden="true">·</span>
+                  <time datetime="2023-10-27T08:00:00Z">4h ago</time>
+                </div>
+                <h2
+                  class="text-lg font-semibold text-text-primary mb-2 leading-snug group-hover:text-accent transition-colors"
+                >
+                  <a href="#" class="focus-visible:outline-none"
+                    >Building Effective RAG Systems: What Actually Works in Production</a
+                  >
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">
+                  After months of experimenting with retrieval-augmented generation in real applications, here's what
+                  I've learned about chunking strategies, embedding models, and the surprising importance of metadata
+                  filtering.
+                </p>
+                <div class="flex items-center gap-2">
+                  <span class="tag">AI &amp; ML</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="feed-item opacity-70 hover:opacity-100">
+              <div class="mt-1.5 w-2 h-2 rounded-full bg-transparent shrink-0" aria-label="Read"></div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 text-xs text-text-secondary mb-1.5">
+                  <img
+                    src="https://www.google.com/s2/favicons?domain=joshwcomeau.com"
+                    alt=""
+                    class="w-4 h-4 rounded-sm"
+                    aria-hidden="true"
+                  />
+                  <span class="font-medium text-text-primary hover:underline cursor-pointer">Josh Comeau</span>
+                  <span aria-hidden="true">·</span>
+                  <time datetime="2023-10-27T07:00:00Z">5h ago</time>
+                </div>
+                <h2
+                  class="text-lg font-semibold text-text-primary mb-2 leading-snug group-hover:text-accent transition-colors"
+                >
+                  <a href="#" class="focus-visible:outline-none">The Surprising Truth About CSS Container Queries</a>
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">
+                  Container queries have been available for a while now, but most developers are still using them like
+                  media queries with a different syntax. There's a much more powerful mental model that unlocks truly
+                  reusable components.
+                </p>
+                <div class="flex items-center gap-2">
+                  <span class="tag">Frontend</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="feed-item opacity-70 hover:opacity-100">
+              <div class="mt-1.5 w-2 h-2 rounded-full bg-transparent shrink-0" aria-label="Read"></div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 text-xs text-text-secondary mb-1.5">
+                  <img
+                    src="https://www.google.com/s2/favicons?domain=figma.com"
+                    alt=""
+                    class="w-4 h-4 rounded-sm"
+                    aria-hidden="true"
+                  />
+                  <span class="font-medium text-text-primary hover:underline cursor-pointer">Figma Blog</span>
+                  <span aria-hidden="true">·</span>
+                  <time datetime="2023-10-27T06:00:00Z">6h ago</time>
+                </div>
+                <h2
+                  class="text-lg font-semibold text-text-primary mb-2 leading-snug group-hover:text-accent transition-colors"
+                >
+                  <a href="#" class="focus-visible:outline-none"
+                    >Introducing Variables 2.0: Design Tokens Meet Real Logic</a
+                  >
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">
+                  Variables in Figma now support conditional logic, mathematical expressions, and cross-file references.
+                  This unlocks design system workflows that were previously only possible in code.
+                </p>
+                <div class="flex items-center gap-2">
+                  <span class="tag">Design</span>
+                  <span class="tag">Frontend</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>

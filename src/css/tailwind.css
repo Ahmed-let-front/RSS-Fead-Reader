@@ -69,6 +69,59 @@
   --container-page: 80rem;
 }
 @layer base {
+  html {
+    height: 100dvh;
+  }
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: var(--radius-full);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-text-tertiary);
+  }
 }
 @layer components {
+  .sidebar-item {
+    @apply flex items-center justify-between w-full p-2 rounded-md text-sm font-medium text-text-secondary transition-colors hover:bg-bg-tertiary hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent;
+  }
+
+  .feed-item {
+    @apply flex gap-4 p-4 border-b border-border-subtle rounded-2xl transition-colors hover:bg-bg-secondary cursor-pointer focus-visible:outline-none focus-visible:bg-bg-secondary;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-md bg-accent-subtle px-2 py-1 text-xs font-medium text-accent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-border bg-bg-primary px-4 py-2 text-sm font-medium text-text-primary shadow-sm transition-colors hover:bg-bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-icon {
+    @apply inline-flex items-center justify-center rounded-md p-2 text-text-secondary transition-colors hover:bg-bg-tertiary hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent;
+  }
 }
